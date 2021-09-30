@@ -1,3 +1,14 @@
 A python light machine-learning app for generating fantasy names
 
-**Installation Guide**
+Installation guide:
+
+1) Install Python3 with random and csv modules on your computer
+2) Download the contents of this repo into any folder on your computer
+3) Replace the names in names.csv with the sample names of your choice
+4) Empty all contents from nameprob.csv
+[OPTIONNAL] 5) Open namegen.py in any text editor and change the value of race_name to your desired race's name (between '') 
+
+Usage guide:
+
+1) Start a python instance and naviguate to the folder where the files are located
+2) Run the script
