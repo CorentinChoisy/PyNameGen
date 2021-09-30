@@ -117,6 +117,7 @@ def make_name():
 
     # Initialize string
     my_name = ""
+    my_name_nums = []
 
     prev_vowel = False # Was the previous letter a vowel
     prev_consonant = False # Was it a consonant
@@ -137,7 +138,8 @@ def make_name():
         prev_vowel = a.is_vowel
         prev_consonant = a.is_consonant
         prev_num = a.num
-    return my_name
+        my_name_nums.append(a.num)
+    return [my_name, my_name_nums] 
 
 def get_letter(prev_num,need_consonant,need_vowel):
     global alphabet
@@ -164,7 +166,7 @@ def pick_letter(i):
 
 # Generate and print a name
 name1 = make_name()
-print(name1)
+print(name1[0])
 
 # Quality assessment
 input_string = "Was this a good "+race_name+" name ? y/n "
