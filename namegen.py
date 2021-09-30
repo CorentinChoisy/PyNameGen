@@ -2,6 +2,7 @@ import csv
 from random import *
 global letter_count
 letter_count = 0
+race_name = 'elf'
 
 class letter():
     # Each letter has a lowercase and a lower case character and
@@ -22,8 +23,12 @@ def normalize(prob):
         total = 0
         for j in range(0,len(alphabet)):
             total+=prob[i][j]
-        for j in range(0,len(alphabet)):
-            new_prob[i][j] = prob[i][j]/total
+        if (total > 0):
+            for j in range(0,len(alphabet)):
+                new_prob[i][j] = prob[i][j]/total
+        else:
+            for j in range(0,len(alphabet)):
+                new_prob[i][j] = len(alphabet)**(-1)
     return new_prob
 
 # Define the alphabet
@@ -161,3 +166,19 @@ def pick_letter(i):
 name1 = make_name()
 print(name1)
 
+# Quality assessment
+input_string = "Was this a good "+race_name+" name ? y/n "
+good = input(input_string)
+if good == 'y':
+    for i in range(0,len(name1[1])-1):
+        prob[name1[1][i]][name1[1][i+1]] *= 1.01
+if good == 'n':
+    for i in range(0,len(name1[1])-1):
+        prob[name1[1][i]][name1[1][i+1]] *= 0.99
+
+prob = normalize(prob)
+
+with open(file_name, 'w', newline='') as csvfile:
+    prob_writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    for i in range(0, len(alphabet)):
+        prob_writer.writerow(prob[i])
