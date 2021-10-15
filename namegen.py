@@ -5,7 +5,7 @@ letter_count = 0
 race_name = 'elf'
 
 class letter():
-    # Each letter has a lowercase and a lower case character and
+    # Each letter has a lowercase and an uppercase character and
     # identifiers as a vowel or consonant
     def __init__(self, lowerchar, upperchar, is_vowel, is_consonant):
         global  letter_count
